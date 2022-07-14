@@ -1,0 +1,60 @@
+//  ——————————————————————————————————————————————————————————————————————————————————————————
+
+//  Filename: Guide.txt
+//  Version: 1.0
+//  Author: https://github.com/jpobzy
+//  Source: https://github.com/jpobzy/L4d-test-crosshair1
+//  License: MIT License
+//  Contact information: https://steamcommunity.com/profiles/76561198855075791/
+  
+//  —————————————————————————————————————————————————————————————————————————————————————————— 
+
+
+How to create a custom crosshair:
+1. 	Create a crosshair png, I used firealpaca and gimp (make sure to export it AS a png)
+2. 	Go to png file and open it with VTFedit
+3. 	Make sure the Flags "No Mipmap, No Level Of Detail, Eight Bit Alpha (Format Specific) " are enabled
+4. 	Go to Options and make sure Auto Create VMT is enabled
+5.	Save the file as "altcrosshair" in `.../materials/vgui/hud` 
+6.	Edit the VMT file to be EXACTLY THIS CODE
+
+
+	UnlitGeneric
+	{
+	"$baseTexture" "vgui\hud\altcrosshair"
+	$translucent 1
+	$alpha 1
+	$vertexalpha 1
+	$ignorez 1
+	$no_fullbright 1
+	$vertexcolor 1
+
+	}
+  
+ 
+7. Edit hudlayout.res in `.../scripts' to have these lines
+
+    xHair
+	{
+	     "ControlName"	            "ImagePanel"
+	     "fieldName"		      "xHair"
+	     "xpos"			      "c-13"
+	     "ypos"			      "c-13"
+	     "zpos"		               "-2"
+	     "wide"		               "26"
+	     "tall"		               "26"
+	     "pinCorner"		        "0"
+	     "visible"			        "1"
+	     "enabled"		                "1"
+	     "image"		         "hud/altcrosshair"
+	     "scaleImage"		        "1"
+
+	}
+ 
+
+8. 	Make sure addoninfo.txt is created or the game will not recognize file as an addon
+9.	Put folder in Bin and drag to vpk.exe to create the vpk file
+10.	Drag vpk file to addons folder
+
+
+
